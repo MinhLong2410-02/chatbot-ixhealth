@@ -46,7 +46,9 @@ async def getstream_webhooks(request: Request):
             command = message_content['command']
             session_id = user_id    
             args = message_content['args']
-            response = await llm.ask(args, session_id=session_id) 
+            query = await tr.translate_dict(args, "en")
+            response = await llm.ask(query, session_id=session_id) 
+            response = await tr.translate_dict(response, "vi")
             channel = server_client.channel(channel_type=channel_type, channel_id=channel_id)
             channel.send_message({"text": response}, message_content['user_id'])
             return {"result": "command executed"}
