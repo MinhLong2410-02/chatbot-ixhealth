@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-jose
+google-api-python-client
+langchain
+passlib
+sentence-transformers
+python-dotenv
+langchain-community
+accelerate
